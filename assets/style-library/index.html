@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fefcf6">
+  <link rel="icon" href="data:,">
+  <title>个人 IP 样式库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #202034;
+      --muted: #666575;
+      --cream: #fefcf6;
+      --paper: #ffffff;
+      --line: #e8e3d9;
+      --blue: #2878d3;
+      --yellow: #f2c947;
+      --pink: #e85b73;
+      --green: #4f9f6a;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; color: var(--ink); background: var(--cream); font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 15px; line-height: 1.55; }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    ::selection { background: var(--yellow); color: var(--ink); }
+
+    .app-header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 62px; padding: 10px clamp(18px, 4vw, 56px); border-bottom: 1px solid var(--line); background: rgba(254, 252, 246, .95); backdrop-filter: blur(12px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: "Noto Serif SC", serif; font-weight: 900; }
+    .brand-mark { display: grid; width: 25px; height: 25px; place-items: center; border: 2px solid var(--ink); border-radius: 50% 44% 48% 45%; background: var(--yellow); font-family: Fraunces, serif; font-size: 16px; line-height: 1; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .header-note { color: var(--muted); font-size: 13px; }
+    .header-link { display: inline-flex; min-height: 34px; align-items: center; justify-content: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--paper); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .header-link:hover { border-color: var(--blue); background: #eef6ff; }
+
+    main { max-width: 1320px; margin: 0 auto; padding: clamp(32px, 5vw, 72px) clamp(18px, 4vw, 56px) 128px; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .55fr); gap: clamp(28px, 6vw, 90px); align-items: end; margin-bottom: clamp(32px, 5vw, 66px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 12px; font-weight: 700; }
+    .eyebrow::before { width: 30px; height: 3px; background: var(--yellow); content: ""; }
+    h1 { max-width: 720px; margin: 10px 0 12px; font-family: "Noto Serif SC", serif; font-size: clamp(33px, 5vw, 58px); line-height: 1.14; letter-spacing: 0; }
+    .intro p { max-width: 650px; margin: 0; color: var(--muted); font-size: 16px; }
+    .intro-note { padding: 20px; border-top: 4px solid var(--pink); background: var(--paper); box-shadow: 0 8px 24px rgba(32, 32, 52, .05); }
+    .intro-note strong { display: block; margin-bottom: 5px; font-family: "Noto Serif SC", serif; font-size: 17px; }
+    .intro-note span { color: var(--muted); font-size: 13px; }
+
+    .overview-section { margin: 0 0 clamp(48px, 7vw, 86px); }
+    .overview-panel { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: 0 12px 32px rgba(32, 32, 52, .06); }
+    .overview-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .overview-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #fff; }
+    .overview-card-header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 10px 11px; border-bottom: 1px solid var(--line); }
+    .overview-code { color: var(--blue); font-size: 12px; font-weight: 800; }
+    .overview-title { overflow-wrap: anywhere; font-family: "Noto Serif SC", serif; font-size: 15px; font-weight: 900; line-height: 1.25; }
+    .overview-samples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); }
+    .overview-samples figure { position: relative; aspect-ratio: 1 / 1; min-width: 0; margin: 0; overflow: hidden; background: #fff; }
+    .overview-samples img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .overview-samples img.contain { object-fit: contain; padding: 6px; }
+    .overview-number { position: absolute; top: 6px; left: 6px; display: grid; width: 22px; height: 22px; place-items: center; border: 1px solid rgba(32, 32, 52, .22); border-radius: 50%; color: var(--ink); background: rgba(254, 252, 246, .92); font-family: Fraunces, serif; font-size: 10px; }
+
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .section-heading h2 { margin: 0; font-family: "Noto Serif SC", serif; font-size: clamp(21px, 2vw, 28px); }
+    .section-heading span { color: var(--muted); font-size: 13px; }
+    .styles-list { display: flex; flex-direction: column; gap: clamp(48px, 7vw, 86px); }
+    .style-section--1 { order: 1; }
+    .style-section--2 { order: 2; }
+    .style-section--3 { order: 3; }
+    .style-section--4 { order: 4; }
+    .style-section--5 { order: 5; }
+    .style-section--6 { order: 6; }
+
+    .style-feature { display: grid; grid-template-columns: minmax(320px, 1.08fr) minmax(320px, .92fr); margin-top: 20px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: 0 12px 32px rgba(32, 32, 52, .06); }
+    .style-feature--reverse .reference-grid { order: 2; }
+    .reference-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; background: #f2efe8; }
+    .reference-grid figure { position: relative; min-height: 0; margin: 0; overflow: hidden; background: #fff; }
+    .reference-grid figure:nth-child(1) { background: #f4d87c; }
+    .reference-grid figure:nth-child(2) { background: #f5d9cb; }
+    .reference-grid figure:nth-child(3) { background: #d9e7ef; }
+    .reference-grid figure:nth-child(4) { background: #f8dfad; }
+    .reference-grid img { display: block; width: 100%; height: 100%; min-height: 280px; object-fit: cover; object-position: center; }
+    .reference-grid figure:nth-child(1) img, .reference-grid figure:nth-child(3) img { object-position: center 42%; }
+    .reference-number { position: absolute; top: 12px; left: 12px; display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid rgba(32, 32, 52, .25); border-radius: 50%; color: var(--ink); background: rgba(254, 252, 246, .88); font-family: Fraunces, serif; font-size: 13px; }
+    .source-link { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 4px; color: var(--ink); background: rgba(254, 252, 246, .9); font-size: 11px; font-weight: 700; text-decoration: none; }
+    .source-link:hover { color: var(--blue); }
+    .source-link svg { width: 12px; height: 12px; }
+
+    .style-content { display: flex; flex-direction: column; padding: clamp(24px, 4vw, 52px); }
+    .style-code { color: var(--blue); font-size: 13px; font-weight: 700; }
+    .style-content h3 { margin: 8px 0 12px; font-family: "Noto Serif SC", serif; font-size: clamp(27px, 3vw, 40px); line-height: 1.16; }
+    .style-summary { margin: 0; color: var(--muted); font-size: 15px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; }
+    .chip { padding: 5px 9px; border-radius: 3px; background: #eef6ff; color: #245d9f; font-size: 12px; font-weight: 600; }
+    .chip.yellow { background: #fff4c9; color: #82620b; }
+    .chip.pink { background: #fff0f3; color: #ad3c51; }
+    .chip.green { background: #edf8ef; color: #2c7345; }
+
+    .traits { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--line); }
+    .trait { display: grid; grid-template-columns: 105px 1fr; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .trait dt { color: var(--blue); font-size: 12px; font-weight: 700; }
+    .trait dd { margin: 0; color: var(--muted); font-size: 13px; }
+    .style-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 28px; }
+    .button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 7px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--paper); cursor: pointer; font-size: 13px; font-weight: 700; transition: background .18s, border-color .18s; }
+    .button:hover { border-color: var(--blue); background: #eef6ff; }
+    .button.primary { border-color: var(--blue); color: #fff; background: var(--blue); }
+    .button.primary:hover { background: #1b68be; }
+    .button svg { width: 16px; height: 16px; stroke-width: 2.25; }
+
+    .selection-bar { position: fixed; z-index: 9; right: clamp(18px, 4vw, 56px); bottom: 20px; left: clamp(18px, 4vw, 56px); display: flex; align-items: center; justify-content: space-between; gap: 14px; max-width: 1208px; margin: 0 auto; padding: 12px 14px 12px 18px; border: 1px solid #dce9f7; border-radius: var(--radius); background: var(--paper); box-shadow: 0 12px 34px rgba(32, 32, 52, .16); }
+    .selected-label { color: var(--muted); font-size: 12px; }
+    .selected-style { margin-top: 2px; font-size: 14px; font-weight: 700; }
+    .selection-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .toast { position: fixed; z-index: 30; top: 78px; right: 22px; max-width: min(340px, calc(100vw - 44px)); padding: 10px 14px; border: 1px solid #bfe4cf; border-radius: 6px; color: #155a38; background: #edfff5; box-shadow: 0 8px 20px rgba(32, 32, 52, .1); font-size: 13px; opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity .18s, transform .18s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    footer { margin: 30px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
+
+    @media (max-width: 900px) { .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .style-feature { grid-template-columns: 1fr; } .reference-grid { min-height: 0; } .reference-grid img { min-height: 260px; } }
+    @media (max-width: 680px) { .app-header { align-items: flex-start; flex-direction: column; } .header-actions { width: 100%; justify-content: space-between; } .header-note { display: none; } .intro { grid-template-columns: 1fr; } .intro-note { max-width: 510px; } main { padding-bottom: 146px; } .overview-panel { padding: 12px; } .overview-grid { grid-template-columns: 1fr; } .reference-grid img { min-height: 210px; } .trait { grid-template-columns: 82px 1fr; } .selection-bar { align-items: stretch; flex-direction: column; } .selection-actions .button { flex: 1; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><span class="brand-mark">i</span><span>个人 IP 样式库</span></div>
+    <div class="header-actions">
+      <span class="header-note">用户参考 · 小红书博主 IP</span>
+      <a class="header-link" href="#overview-title">查看总览页</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <span class="eyebrow">个人 IP 样式库 · 六种方向</span>
+        <h1 id="page-title">六种个人 IP<br>视觉方向</h1>
+        <p>从极简头像到换装小人，从平滑扁平到手帐涂鸦。选中一个方向后，再根据真人照片建立专属原型与表情动作资产。</p>
+      </div>
+      <aside class="intro-note">
+        <strong>选择时看什么？</strong>
+        <span>先看你希望突出头像、表情、穿搭还是故事感。一个主风格确定后，再延展成完整的个人 IP。</span>
+      </aside>
+    </section>
+
+    <section class="overview-section" aria-labelledby="overview-title">
+      <div class="section-heading"><h2 id="overview-title">总览页 · 六种风格全部样式图</h2><span>6 个方向 · 24 张参考图</span></div>
+      <div class="overview-panel">
+        <div class="overview-grid">
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-01</span><span class="overview-title">简笔涂鸦头像</span></div>
+            <div class="overview-samples">
+              <figure><img class="contain" src="assets/references/style-06/ref-01.png" alt="短发人物、粉色腮红和粗黑线条的极简 Q 版头像"><span class="overview-number">01</span></figure>
+              <figure><img class="contain" src="assets/references/style-06/ref-02.png" alt="戴贝雷帽的长发人物、粉色腮红和粗黑线条的极简 Q 版头像"><span class="overview-number">02</span></figure>
+              <figure><img class="contain" src="assets/references/style-06/ref-03.png" alt="带粉色蝴蝶结和彩色小爱心点缀的极简 Q 版人物"><span class="overview-number">03</span></figure>
+              <figure><img class="contain" src="assets/references/style-06/ref-04.png" alt="头顶粉色小花、带粉色腮红的极简 Q 版人物"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-02</span><span class="overview-title">清透扁平肖像</span></div>
+            <div class="overview-samples">
+              <figure><img src="assets/references/style-02/ref-01.jpg" alt="白色短发、蓝色背景和白猫的扁平人物肖像"><span class="overview-number">01</span></figure>
+              <figure><img src="assets/references/style-02/ref-02.jpg" alt="白色长发、红色背景和两只猫的扁平人物肖像"><span class="overview-number">02</span></figure>
+              <figure><img src="assets/references/style-02/ref-03.jpg" alt="白色马尾、蓝色背景和白猫的扁平人物肖像"><span class="overview-number">03</span></figure>
+              <figure><img src="assets/references/style-02/ref-04.jpg" alt="白色短发、深色背景和黑白猫的扁平人物肖像"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-03</span><span class="overview-title">粉蜡笔撞色肖像</span></div>
+            <div class="overview-samples">
+              <figure><img src="assets/references/style-01/ref-01.jpg" alt="黄色长发、大眼睛、彩色颗粒笔触的人物肖像"><span class="overview-number">01</span></figure>
+              <figure><img src="assets/references/style-01/ref-02.jpg" alt="金发、大眼睛、厚重干刷笔触的人物肖像"><span class="overview-number">02</span></figure>
+              <figure><img src="assets/references/style-01/ref-03.jpg" alt="蓝色短发、夸张神情、彩色块面的人物肖像"><span class="overview-number">03</span></figure>
+              <figure><img src="assets/references/style-01/ref-04.jpg" alt="卷曲金发、大眼睛、粉蜡笔肌理的人物肖像"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-04</span><span class="overview-title">彩铅换装小人</span></div>
+            <div class="overview-samples">
+              <figure><img class="contain" src="assets/references/style-05/ref-01.png" alt="穿黄色雨衣和雨靴、踩水坑的彩铅 Q 版人物"><span class="overview-number">01</span></figure>
+              <figure><img class="contain" src="assets/references/style-05/ref-02.png" alt="绿色衣裙和双辫子、抱着书本的彩铅 Q 版人物"><span class="overview-number">02</span></figure>
+              <figure><img class="contain" src="assets/references/style-05/ref-03.png" alt="戴蓝色帽子、背着粉色小包走路的彩铅 Q 版人物"><span class="overview-number">03</span></figure>
+              <figure><img class="contain" src="assets/references/style-05/ref-04.png" alt="粉色头发、蓝粉制服和圆形小包的彩铅 Q 版人物"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-05</span><span class="overview-title">治愈手帐小剧场</span></div>
+            <div class="overview-samples">
+              <figure><img class="contain" src="assets/references/style-04/ref-01.png" alt="戴着巨大树叶帽、简单黑色线条和绿色点缀的可爱人物插画"><span class="overview-number">01</span></figure>
+              <figure><img class="contain" src="assets/references/style-04/ref-02.png" alt="绿色蓬松头发、猫咪和手帐涂鸦装饰的全身人物插画"><span class="overview-number">02</span></figure>
+              <figure><img class="contain" src="assets/references/style-04/ref-03.png" alt="抱着荷花、长卷发和粉色花纹衣服的治愈人物插画"><span class="overview-number">03</span></figure>
+              <figure><img class="contain" src="assets/references/style-04/ref-04.png" alt="蓝色单色线条、被许多猫咪围绕的可爱人物插画"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+          <article class="overview-card">
+            <div class="overview-card-header"><span class="overview-code">IP-06</span><span class="overview-title">粗线撞色漫画</span></div>
+            <div class="overview-samples">
+              <figure><img src="assets/references/style-03/ref-01.jpg" alt="红色卷发、玫瑰装饰和粗黑描边的少女漫画头像"><span class="overview-number">01</span></figure>
+              <figure><img src="assets/references/style-03/ref-02.jpg" alt="黑色卷发、黄色背景和星星装饰的少女漫画头像"><span class="overview-number">02</span></figure>
+              <figure><img src="assets/references/style-03/ref-03.jpg" alt="紫色卷发、蓝色卫衣和粗黑描边的少女漫画头像"><span class="overview-number">03</span></figure>
+              <figure><img src="assets/references/style-03/ref-04.jpg" alt="橙色长发、向日葵花环和红色背景的少女漫画头像"><span class="overview-number">04</span></figure>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="styles-list">
+    <section class="style-section style-section--3" aria-labelledby="style-title">
+      <div class="section-heading"><h2 id="style-title">IP-03 · 粉蜡笔撞色肖像</h2><span>4 张参考共同定义一个方向</span></div>
+      <article class="style-feature" data-code="IP-03" data-name="粉蜡笔撞色肖像 IP">
+        <div class="reference-grid" aria-label="风格 01 的四张 Pinterest 参考图">
+          <figure><img src="assets/references/style-01/ref-01.jpg" alt="黄色长发、大眼睛、彩色颗粒笔触的人物肖像"><span class="reference-number">01</span><a class="source-link" href="https://www.pinterest.com/pin/543246773822417935/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-01/ref-02.jpg" alt="金发、大眼睛、厚重干刷笔触的人物肖像"><span class="reference-number">02</span><a class="source-link" href="https://www.pinterest.com/pin/68749917422/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-01/ref-03.jpg" alt="蓝色短发、夸张神情、彩色块面的人物肖像"><span class="reference-number">03</span><a class="source-link" href="https://www.pinterest.com/pin/877076096196053179/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-01/ref-04.jpg" alt="卷曲金发、大眼睛、粉蜡笔肌理的人物肖像"><span class="reference-number">04</span><a class="source-link" href="https://www.pinterest.com/pin/877076096188247832/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-03</span>
+          <h3>粉蜡笔撞色<br>肖像 IP</h3>
+          <p class="style-summary">不是精致动漫，也不是普通扁平插画。它更接近用粉蜡笔、丙烯干刷画出的时尚卡通肖像，人物有一点倔强、有一点好奇。</p>
+          <div class="chips"><span class="chip yellow">颗粒干刷</span><span class="chip">夸张大眼</span><span class="chip pink">高饱和撞色</span><span class="chip green">半身肖像</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>大头半身为主，耳朵、眼睛、发型都可以略微夸张。</dd></div>
+            <div class="trait"><dt>笔触质感</dt><dd>保留油画棒 / 粉蜡笔的颗粒、涂抹边缘和局部干刷，不做光滑矢量面。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>以一个抢眼发色或服装色为主角，用蓝、粉、绿、黄做少量撞色点亮。</dd></div>
+            <div class="trait"><dt>表情延展</dt><dd>适合近景的“惊讶、嫌弃、灵感来了、开心、思考”等脸部情绪，表情要大。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="style-section style-section--2" aria-labelledby="style-02-title">
+      <div class="section-heading"><h2 id="style-02-title">IP-02 · 清透扁平肖像</h2><span>4 张参考共同定义一个方向</span></div>
+      <article class="style-feature style-feature--reverse" data-code="IP-02" data-name="清透扁平肖像 IP">
+        <div class="reference-grid" aria-label="风格 02 的四张 Pinterest 参考图">
+          <figure><img src="assets/references/style-02/ref-01.jpg" alt="白色短发、蓝色背景和白猫的扁平人物肖像"><span class="reference-number">01</span><a class="source-link" href="https://www.pinterest.com/pin/1477812372733273/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-02/ref-02.jpg" alt="白色长发、红色背景和两只猫的扁平人物肖像"><span class="reference-number">02</span><a class="source-link" href="https://www.pinterest.com/pin/702350504410790514/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-02/ref-03.jpg" alt="白色马尾、蓝色背景和白猫的扁平人物肖像"><span class="reference-number">03</span><a class="source-link" href="https://www.pinterest.com/pin/937804322388383480/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-02/ref-04.jpg" alt="白色短发、深色背景和黑白猫的扁平人物肖像"><span class="reference-number">04</span><a class="source-link" href="https://www.pinterest.com/pin/621426448611786782/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-02</span>
+          <h3>清透扁平<br>肖像 IP</h3>
+          <p class="style-summary">柔和的平面色块、干净边缘和极少阴影，让人物显得安静又有辨识度。适合以发型、眼神和一个陪伴物做记忆点。</p>
+          <div class="chips"><span class="chip">平滑色块</span><span class="chip yellow">纯色背景</span><span class="chip pink">动漫大眼</span><span class="chip green">陪伴物</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>以头像或半身正面为主，眼睛偏大，但轮廓和五官保持干净克制。</dd></div>
+            <div class="trait"><dt>笔触质感</dt><dd>几乎没有颗粒和手绘纹理，使用平滑块面与少量柔和明暗，画面很清透。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>一个大面积纯色背景加 2-3 个主色；发色和服装可成为整张图的标志。</dd></div>
+            <div class="trait"><dt>表情延展</dt><dd>适合“平静、无语、开心、害羞、好奇”等轻情绪，也可用一只宠物或个人物件增强记忆点。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="style-section style-section--6" aria-labelledby="style-03-title">
+      <div class="section-heading"><h2 id="style-03-title">IP-06 · 粗线撞色漫画</h2><span>4 张参考共同定义一个方向</span></div>
+      <article class="style-feature" data-code="IP-06" data-name="粗线撞色漫画 IP">
+        <div class="reference-grid" aria-label="风格 03 的四张 Pinterest 参考图">
+          <figure><img src="assets/references/style-03/ref-01.jpg" alt="红色卷发、玫瑰装饰和粗黑描边的少女漫画头像"><span class="reference-number">01</span><a class="source-link" href="https://www.pinterest.com/pin/547609635962829429/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-03/ref-02.jpg" alt="黑色卷发、黄色背景和星星装饰的少女漫画头像"><span class="reference-number">02</span><a class="source-link" href="https://www.pinterest.com/pin/113012271896842403/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-03/ref-03.jpg" alt="紫色卷发、蓝色卫衣和粗黑描边的少女漫画头像"><span class="reference-number">03</span><a class="source-link" href="https://www.pinterest.com/pin/1105211564826719057/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+          <figure><img src="assets/references/style-03/ref-04.jpg" alt="橙色长发、向日葵花环和红色背景的少女漫画头像"><span class="reference-number">04</span><a class="source-link" href="https://www.pinterest.com/pin/953003971164165291/" target="_blank" rel="noreferrer"><i data-lucide="external-link"></i>来源</a></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-06</span>
+          <h3>粗线撞色<br>漫画 IP</h3>
+          <p class="style-summary">粗黑描边、夸张圆眼和高饱和纯色背景带来很强的第一眼记忆点。发型、耳饰、星星或花朵都可以变成用户自己的标志物。</p>
+          <div class="chips"><span class="chip">粗黑描边</span><span class="chip yellow">高饱和背景</span><span class="chip pink">夸张大眼</span><span class="chip green">标志小物</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>大头半身、圆眼和小鼻小嘴，头发与眼睛是最强的个人识别点。</dd></div>
+            <div class="trait"><dt>线条质感</dt><dd>轮廓用粗黑线，局部保留一点不规则手绘感；服装褶皱和五官只画必要信息。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>背景使用一块饱和纯色，人物以深色头发或鲜艳服装形成大面积对比，点缀控制在两种以内。</dd></div>
+            <div class="trait"><dt>表情延展</dt><dd>非常适合做“震惊、开心、无语、委屈、灵感来了”等大情绪，也能围绕头发加入星星、花朵和标志性配件。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="style-section style-section--5" aria-labelledby="style-04-title">
+      <div class="section-heading"><h2 id="style-04-title">IP-05 · 治愈手帐小剧场</h2><span>4 张用户参考共同定义一个方向</span></div>
+      <article class="style-feature style-feature--reverse" data-code="IP-05" data-name="治愈手帐小剧场 IP">
+        <div class="reference-grid" aria-label="风格 04 的四张用户参考图">
+          <figure><img src="assets/references/style-04/ref-01.png" alt="戴着巨大树叶帽、简单黑色线条和绿色点缀的可爱人物插画"><span class="reference-number">01</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-04/ref-02.png" alt="绿色蓬松头发、猫咪和手帐涂鸦装饰的全身人物插画"><span class="reference-number">02</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-04/ref-03.png" alt="抱着荷花、长卷发和粉色花纹衣服的治愈人物插画"><span class="reference-number">03</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-04/ref-04.png" alt="蓝色单色线条、被许多猫咪围绕的可爱人物插画"><span class="reference-number">04</span><span class="source-link">用户参考</span></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-05</span>
+          <h3>治愈手帐<br>小剧场 IP</h3>
+          <p class="style-summary">像手帐里画出来的个人角色：圆润、留白、带一点随手涂鸦感。人物可以和植物、宠物、花束或日常小物自然组合，画面很有陪伴感。</p>
+          <div class="chips"><span class="chip">手帐线条</span><span class="chip yellow">大留白</span><span class="chip pink">圆脸腮红</span><span class="chip green">植物与宠物</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>Q 版大头、小身体，五官极简；发型、帽子或衣服轮廓可以被有趣地夸张。</dd></div>
+            <div class="trait"><dt>线条质感</dt><dd>黑色或深色手绘线条带一点不均匀感，局部用短小排线和随手涂鸦增加温度。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>以白底和一种主色为核心，最多再加一到两种柔和辅助色，让画面始终干净。</dd></div>
+            <div class="trait"><dt>表情延展</dt><dd>特别适合扩成一套全身动作、场景小剧场和宠物互动；可做“出门、抱猫、喝咖啡、思考、庆祝”等连续内容资产。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="style-section style-section--4" aria-labelledby="style-05-title">
+      <div class="section-heading"><h2 id="style-05-title">IP-04 · 彩铅换装小人</h2><span>4 张用户参考共同定义一个方向</span></div>
+      <article class="style-feature" data-code="IP-04" data-name="彩铅换装小人 IP">
+        <div class="reference-grid" aria-label="风格 05 的四张用户参考图">
+          <figure><img src="assets/references/style-05/ref-01.png" alt="穿黄色雨衣和雨靴、踩水坑的彩铅 Q 版人物"><span class="reference-number">01</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-05/ref-02.png" alt="绿色衣裙和双辫子、抱着书本的彩铅 Q 版人物"><span class="reference-number">02</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-05/ref-03.png" alt="戴蓝色帽子、背着粉色小包走路的彩铅 Q 版人物"><span class="reference-number">03</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-05/ref-04.png" alt="粉色头发、蓝粉制服和圆形小包的彩铅 Q 版人物"><span class="reference-number">04</span><span class="source-link">用户参考</span></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-04</span>
+          <h3>彩铅换装<br>小人 IP</h3>
+          <p class="style-summary">小小一只、穿搭完整、道具明确。它把“人设”放在服装、鞋子、包包和动作里，画面像一张温柔的彩铅角色贴纸。</p>
+          <div class="chips"><span class="chip">彩铅颗粒</span><span class="chip yellow">全身换装</span><span class="chip pink">糖果低饱和</span><span class="chip green">生活道具</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>头大身小的全身 Q 版，脚、帽子、衣摆和配件都可以略微放大，造型很有收藏感。</dd></div>
+            <div class="trait"><dt>笔触质感</dt><dd>用细颗粒彩铅或蜡笔上色，轮廓是偏灰的铅笔线，不要使用过于锋利的纯黑硬边。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>以粉、蓝、黄、绿等低饱和糖果色为主，同一人物每次控制在两到三种主色。</dd></div>
+            <div class="trait"><dt>动作延展</dt><dd>最适合做换装和生活动作：下雨、上学、旅行、抱书、散步、喝饮料、拿相机；道具能直接承载博主的内容定位。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="style-section style-section--1" aria-labelledby="style-06-title">
+      <div class="section-heading"><h2 id="style-06-title">IP-01 · 简笔涂鸦头像</h2><span>4 张用户参考共同定义一个方向</span></div>
+      <article class="style-feature style-feature--reverse" data-code="IP-01" data-name="简笔涂鸦头像 IP">
+        <div class="reference-grid" aria-label="风格 06 的四张用户参考图">
+          <figure><img src="assets/references/style-06/ref-01.png" alt="短发人物、粉色腮红和粗黑线条的极简 Q 版头像"><span class="reference-number">01</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-06/ref-02.png" alt="戴贝雷帽的长发人物、粉色腮红和粗黑线条的极简 Q 版头像"><span class="reference-number">02</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-06/ref-03.png" alt="带粉色蝴蝶结和彩色小爱心点缀的极简 Q 版人物"><span class="reference-number">03</span><span class="source-link">用户参考</span></figure>
+          <figure><img src="assets/references/style-06/ref-04.png" alt="头顶粉色小花、带粉色腮红的极简 Q 版人物"><span class="reference-number">04</span><span class="source-link">用户参考</span></figure>
+        </div>
+        <div class="style-content">
+          <span class="style-code">IP-01</span>
+          <h3>简笔涂鸦<br>头像 IP</h3>
+          <p class="style-summary">用不那么规整的粗黑线，画出圆圆的脸和简单五官，再留一小块腮红或彩色装饰。信息很少，但反应和性格很直接。</p>
+          <div class="chips"><span class="chip">粗颗粒线</span><span class="chip yellow">大留白</span><span class="chip pink">粉色腮红</span><span class="chip green">轻量点缀</span></div>
+          <dl class="traits">
+            <div class="trait"><dt>人物比例</dt><dd>以大头、半身甚至头像为主，身体只保留最必要的轮廓，不强调写实比例。</dd></div>
+            <div class="trait"><dt>线条质感</dt><dd>黑色线条要有蜡笔或粗马克笔颗粒感，允许微微抖动和断笔，避免过度精致。</dd></div>
+            <div class="trait"><dt>配色逻辑</dt><dd>白底为主，只用黑线、肤色、粉色腮红，再加入一个低饱和小色点作为区分。</dd></div>
+            <div class="trait"><dt>动作延展</dt><dd>最适合头像、聊天反应和短句贴图：点头、摇头、疑惑、开心、哭哭、比心。复杂全身换装不建议放在这一风格里。</dd></div>
+          </dl>
+          <div class="style-actions"><button class="button primary select-style"><i data-lucide="check"></i>选择此风格</button><button class="button copy-code"><i data-lucide="copy"></i>复制编码</button></div>
+        </div>
+      </article>
+    </section>
+    </div>
+    <footer>参考图片由用户提供 Pinterest 链接，仅用于风格研究；作品版权归原作者所有。</footer>
+  </main>
+
+  <aside class="selection-bar" aria-live="polite">
+    <div><div class="selected-label">已选择</div><div class="selected-style" id="selectedStyle">还没有选择样式</div></div>
+    <div class="selection-actions"><button class="button" id="copyName" disabled><i data-lucide="copy"></i>复制名称</button><button class="button primary" id="copySelection" disabled><i data-lucide="clipboard-copy"></i>复制选择</button></div>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    const styles = [...document.querySelectorAll('.style-feature')];
+    const selectedStyle = document.getElementById('selectedStyle');
+    const copyName = document.getElementById('copyName');
+    const copySelection = document.getElementById('copySelection');
+    const toast = document.getElementById('toast');
+    let selected = null;
+    let toastTimer;
+
+    function refreshIcons() { if (window.lucide) window.lucide.createIcons(); }
+    function showToast(message) { toast.textContent = message; toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 1900); }
+    async function copyText(text, message) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+        else {
+          const textarea = document.createElement('textarea');
+          textarea.value = text; textarea.setAttribute('readonly', ''); textarea.style.cssText = 'position:fixed;opacity:0';
+          document.body.appendChild(textarea); textarea.select(); document.execCommand('copy'); textarea.remove();
+        }
+        showToast(message);
+      } catch { showToast('复制失败，请手动复制。'); }
+    }
+    function chooseStyle(style) {
+      selected = style;
+      styles.forEach(item => { item.style.borderColor = ''; item.style.boxShadow = ''; });
+      style.style.borderColor = 'var(--blue)';
+      style.style.boxShadow = '0 0 0 4px rgba(40, 120, 211, .12), 0 12px 32px rgba(32, 32, 52, .06)';
+      selectedStyle.textContent = `${style.dataset.code} · ${style.dataset.name}`;
+      copyName.disabled = false; copySelection.disabled = false;
+      showToast(`已选择 ${style.dataset.code}`);
+    }
+    styles.forEach(style => {
+      style.querySelector('.select-style').addEventListener('click', () => chooseStyle(style));
+      style.querySelector('.copy-code').addEventListener('click', () => copyText(style.dataset.code, `已复制 ${style.dataset.code}`));
+    });
+    copyName.addEventListener('click', () => selected && copyText(selected.dataset.name, `已复制 ${selected.dataset.name}`));
+    copySelection.addEventListener('click', () => selected && copyText(`${selected.dataset.code} · ${selected.dataset.name}`, '已复制样式选择'));
+    refreshIcons();
+  </script>
+</body>
+</html>
