@@ -1,0 +1,121 @@
+schema_version: "1.0"
+policy:
+  purpose: "Track provenance and permissions for bundled visual reference assets."
+  statuses:
+    cleared: "Evidence for the intended use is recorded."
+    pending_clearance: "Do not send the image to a generation model or redistribute it as a reusable asset."
+    blocked: "Do not use or distribute."
+  pending_clearance_behavior:
+    - "Use the matching text rules in style-specs.yaml instead of the image file."
+    - "Do not treat a Pinterest URL, attribution, or a user-supplied label as a license."
+    - "Replace or remove the asset before publishing a distribution that requires permission."
+  clearance_evidence_required:
+    - original_creator
+    - original_source_url
+    - license_or_written_permission
+    - permitted_uses
+    - reviewed_on
+
+asset_groups:
+  - id: IP-01-style-06
+    style_id: IP-01
+    paths:
+      - assets/style-library/assets/references/style-06/ref-01.png
+      - assets/style-library/assets/references/style-06/ref-02.png
+      - assets/style-library/assets/references/style-06/ref-03.png
+      - assets/style-library/assets/references/style-06/ref-04.png
+    source_type: "user-supplied provenance not recorded"
+    original_creator: ""
+    original_source_urls: []
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""
+
+  - id: IP-02-style-02
+    style_id: IP-02
+    paths:
+      - assets/style-library/assets/references/style-02/ref-01.jpg
+      - assets/style-library/assets/references/style-02/ref-02.jpg
+      - assets/style-library/assets/references/style-02/ref-03.jpg
+      - assets/style-library/assets/references/style-02/ref-04.jpg
+    source_type: "Pinterest discovery URLs; original creator and license unverified"
+    original_creator: ""
+    original_source_urls:
+      - https://www.pinterest.com/pin/1477812372733273/
+      - https://www.pinterest.com/pin/702350504410790514/
+      - https://www.pinterest.com/pin/937804322388383480/
+      - https://www.pinterest.com/pin/621426448611786782/
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""
+
+  - id: IP-03-style-01
+    style_id: IP-03
+    paths:
+      - assets/style-library/assets/references/style-01/ref-01.jpg
+      - assets/style-library/assets/references/style-01/ref-02.jpg
+      - assets/style-library/assets/references/style-01/ref-03.jpg
+      - assets/style-library/assets/references/style-01/ref-04.jpg
+      - assets/style-library/assets/references/style-01/approved-anchor.png
+    source_type: "Pinterest discovery URLs and local anchor; original creator and license unverified"
+    original_creator: ""
+    original_source_urls:
+      - https://www.pinterest.com/pin/543246773822417935/
+      - https://www.pinterest.com/pin/68749917422/
+      - https://www.pinterest.com/pin/877076096196053179/
+      - https://www.pinterest.com/pin/877076096188247832/
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""
+
+  - id: IP-04-style-05
+    style_id: IP-04
+    paths:
+      - assets/style-library/assets/references/style-05/ref-01.png
+      - assets/style-library/assets/references/style-05/ref-02.png
+      - assets/style-library/assets/references/style-05/ref-03.png
+      - assets/style-library/assets/references/style-05/ref-04.png
+    source_type: "user-supplied provenance not recorded"
+    original_creator: ""
+    original_source_urls: []
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""
+
+  - id: IP-05-style-04
+    style_id: IP-05
+    paths:
+      - assets/style-library/assets/references/style-04/ref-01.png
+      - assets/style-library/assets/references/style-04/ref-02.png
+      - assets/style-library/assets/references/style-04/ref-03.png
+      - assets/style-library/assets/references/style-04/ref-04.png
+    source_type: "user-supplied provenance not recorded"
+    original_creator: ""
+    original_source_urls: []
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""
+
+  - id: IP-06-style-03
+    style_id: IP-06
+    paths:
+      - assets/style-library/assets/references/style-03/ref-01.jpg
+      - assets/style-library/assets/references/style-03/ref-02.jpg
+      - assets/style-library/assets/references/style-03/ref-03.jpg
+      - assets/style-library/assets/references/style-03/ref-04.jpg
+    source_type: "Pinterest discovery URLs; original creator and license unverified"
+    original_creator: ""
+    original_source_urls:
+      - https://www.pinterest.com/pin/547609635962829429/
+      - https://www.pinterest.com/pin/113012271896842403/
+      - https://www.pinterest.com/pin/1105211564826719057/
+      - https://www.pinterest.com/pin/953003971164165291/
+    license_or_permission: ""
+    permitted_uses: []
+    status: pending_clearance
+    reviewed_on: ""

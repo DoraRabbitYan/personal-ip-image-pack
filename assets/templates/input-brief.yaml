@@ -1,0 +1,41 @@
+schema_version: "1.0"
+brief_id: "ip-<character-id>-<yyyy-mm-dd>"
+status: draft
+character_id: ""
+output_root: ""
+
+rights:
+  likeness_consent: pending
+  subject_authority: self
+  third_party_or_minor_consent: not_applicable
+  intended_use: personal
+  style_ledger_ref: "references/style-asset-rights.yaml"
+  style_reference_mode: text_spec_only
+
+photos:
+  - id: identity-01
+    source_ref: ""
+    role: primary_identity
+    usable: pending
+    notes: ""
+
+style:
+  id: ""
+  variant: default
+  spec_revision: "1.0"
+
+creative:
+  mode: reusable_ip
+  positioning: ""
+  tone: ""
+  palette: []
+  preserve: []
+  avoid: []
+
+scope:
+  requested_assets:
+    - id: prototype
+      asset_form: avatar
+      variation: "neutral"
+      target_background: transparent
+  preview_sheet: false

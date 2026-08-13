@@ -1,0 +1,70 @@
+schema_version: "1.0"
+forms:
+  avatar:
+    target_pixel_size: [1024, 1024]
+    aspect_ratio: "1:1"
+    format: png
+    alpha: preferred
+    subject_count: 1
+    framing: head_or_shoulders
+    text_allowed: false
+  bust_sticker:
+    target_pixel_size: [1024, 1024]
+    aspect_ratio: "1:1"
+    format: png
+    alpha: required
+    subject_count: 1
+    framing: bust_with_safe_padding
+    safe_padding: "12%"
+    text_allowed: false
+  full_body:
+    target_pixel_size: [1080, 1350]
+    aspect_ratio: "4:5"
+    format: png
+    alpha: preferred
+    subject_count: 1
+    framing: full_figure_with_safe_margin
+    text_allowed: false
+  full_body_sticker:
+    target_pixel_size: [1080, 1350]
+    aspect_ratio: "4:5"
+    format: png
+    alpha: required
+    subject_count: 1
+    framing: full_figure_with_safe_margin
+    safe_padding: "10%"
+    text_allowed: false
+  outfit_variant:
+    target_pixel_size: [1080, 1350]
+    aspect_ratio: "4:5"
+    format: png
+    alpha: preferred
+    subject_count: 1
+    framing: full_figure_with_safe_margin
+    text_allowed: false
+  scene_card:
+    target_pixel_size: [1080, 1350]
+    aspect_ratio: "4:5"
+    format: png
+    alpha: not_required
+    subject_count: 1
+    framing: character_plus_one_meaningful_scene_element
+    text_allowed: false
+  cover_card:
+    target_pixel_size: [1080, 1440]
+    aspect_ratio: "3:4"
+    format: png
+    alpha: not_required
+    subject_count: 1
+    framing: portrait_or_bust_with_copy_safe_area
+    text_allowed: false
+  preview_sheet:
+    format: png
+    role: review_only
+    source_of_truth: false
+    generated_from: qa_passed_source_assets_only
+
+tool_fallback:
+  - If the image tool cannot set target pixels, record the actual pixel_size in the manifest.
+  - If the image tool cannot create real alpha, use a solid background and record alpha.actual as false.
+  - Do not combine multiple requested stickers into one source asset. Generate them individually; a composite is preview_sheet only.

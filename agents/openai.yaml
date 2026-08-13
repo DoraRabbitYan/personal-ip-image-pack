@@ -1,4 +1,4 @@
 interface:
   display_name: "个人 IP 形象与表情包生成器"
-  short_description: "从个人照片生成统一风格的卡通 IP、表情和动作套图"
-  default_prompt: "使用 $personal-ip-image-pack 帮我先选择风格，再根据我的照片制作个人卡通 IP。"
+  short_description: "从授权照片生成可版本化交付的个人卡通 IP 资产包"
+  default_prompt: "使用 $personal-ip-image-pack 帮我选择风格，并根据我的授权照片建立可长期复用的个人卡通 IP。"

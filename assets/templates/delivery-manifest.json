@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "delivery_id": "ip-<character-id>-r1",
+  "character_id": "<character-id>",
+  "release": "r1",
+  "status": "draft",
+  "character_spec": "contracts/character-spec-v1.yaml",
+  "acceptance_qa": "contracts/acceptance-qa-r1.md",
+  "rights_gate": {
+    "likeness_consent": "confirmed",
+    "style_ledger_ref": "references/style-asset-rights.yaml",
+    "style_reference_mode": "text_spec_only"
+  },
+  "assets": [
+    {
+      "id": "prototype",
+      "role": "source_asset",
+      "file": "assets/prototype-v1-r1.png",
+      "asset_form": "avatar",
+      "source_spec": "v1",
+      "format": "png",
+      "pixel_size": [1024, 1024],
+      "alpha": {
+        "required": false,
+        "actual": false
+      },
+      "background": "solid",
+      "qa_status": "pending",
+      "sha256": ""
+    }
+  ],
+  "user_acceptance": {
+    "status": "pending",
+    "accepted_at": null,
+    "feedback": ""
+  }
+}

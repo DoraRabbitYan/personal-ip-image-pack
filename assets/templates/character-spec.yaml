@@ -1,0 +1,49 @@
+schema_version: "1.0"
+character_id: ""
+identity_version: d1
+status: draft
+
+derived_from:
+  brief_id: ""
+  previous_version: null
+  change_note: ""
+
+identity_lock:
+  face_shape: ""
+  age_impression: ""
+  hair: ""
+  eyes_and_glasses: ""
+  skin_and_blush: ""
+  outfit: ""
+  accessories: []
+  proportions: ""
+
+visual_lock:
+  style_id: ""
+  style_variant: default
+  palette: []
+  line_material: ""
+  background: ""
+
+do_not_change: []
+mutable_fields:
+  - expression
+  - pose
+  - gesture
+  - required_prop
+
+generation_baseline:
+  identity_refs: []
+  style_refs: []
+  reference_mode: text_spec_only
+  prompt: ""
+  negative_prompt: ""
+  aspect_ratio: ""
+
+approved_anchor:
+  asset_id: null
+  file: null
+
+approval:
+  user_status: pending
+  approved_at: null

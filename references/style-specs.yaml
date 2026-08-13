@@ -1,0 +1,223 @@
+schema_version: "1.0"
+reference_policy:
+  identity_images:
+    minimum: 1
+    maximum: 2
+    roles:
+      - primary_identity
+      - optional_feature_check
+  bundled_style_images:
+    use_only_when: "The linked asset group is cleared in style-asset-rights.yaml."
+    fallback_when_uncleared: "Use this style entry's render_rules and negative_rules as text only."
+  precedence:
+    - "A confirmed character-spec-vN is the source of truth for identity and locked visual traits."
+    - "A user-approved vN+1 change replaces the earlier locked trait."
+    - "The selected style constrains rendering, not the user's identity."
+    - "User palette and use-case choices replace a style fallback when they do not break the style rules."
+
+styles:
+  - id: IP-01
+    display_name: "简笔涂鸦头像"
+    reference_group: IP-01-style-06
+    reference_assets:
+      - assets/style-library/assets/references/style-06/ref-01.png
+      - assets/style-library/assets/references/style-06/ref-02.png
+      - assets/style-library/assets/references/style-06/ref-03.png
+      - assets/style-library/assets/references/style-06/ref-04.png
+    capabilities:
+      default_prototype: avatar
+      supported_forms: [avatar, bust_sticker]
+      conditional_forms: []
+      unsupported_forms: [full_body, full_body_sticker, outfit_variant, scene_card]
+    defaults:
+      aspect_ratio: "1:1"
+      background: white_or_transparent
+    render_rules:
+      - "圆形大头、小脖子、小肩膀；可画到半身。"
+      - "五官压缩为点或短线，小鼻子、小嘴巴。"
+      - "使用粗而柔软的黑色线条、圆润线头、轻微颗粒和不规则断笔。"
+      - "以白色为主，保留粉色腮红，只加入一种低饱和点缀色。"
+    negative_rules:
+      - "写实人体"
+      - "复杂阴影或背景"
+      - "光滑矢量描边"
+      - "精致动漫五官"
+      - "文字、签名、水印"
+    qa:
+      - "头像或肩像轮廓在缩小后仍可辨。"
+      - "五官保持点/短线的极简程度。"
+      - "线条粗细、圆润感和手绘不规则感一致。"
+      - "除肤色、黑线、粉色腮红外只出现一个低饱和点缀色。"
+
+  - id: IP-02
+    display_name: "清透扁平肖像"
+    reference_group: IP-02-style-02
+    reference_assets:
+      - assets/style-library/assets/references/style-02/ref-01.jpg
+      - assets/style-library/assets/references/style-02/ref-02.jpg
+      - assets/style-library/assets/references/style-02/ref-03.jpg
+    variants:
+      mature:
+        selection_required: true
+        reference_assets:
+          - assets/style-library/assets/references/style-02/ref-04.jpg
+    capabilities:
+      default_prototype: avatar
+      supported_forms: [avatar, bust_sticker, cover_card]
+      conditional_forms: [full_body]
+      unsupported_forms: [outfit_variant]
+    defaults:
+      aspect_ratio: "1:1"
+      background: user_brand_flat_or_light_blue_green
+    render_rules:
+      - "几乎无描边，只用干净、边缘明确的大色块塑造人物。"
+      - "头部明显放大；眼睛是夸张黑色椭圆，鼻子是小色块，嘴巴是简单弧线。"
+      - "头发由 5–8 块流畅、连贯的大形状构成，不画发丝或尖锐碎片。"
+      - "脸部、脖子和头发最多两级平面明暗，阴影边缘清晰。"
+    negative_rules:
+      - "写实皮肤或空气感光影"
+      - "细密发丝"
+      - "三维渲染"
+      - "低多边形切面"
+      - "常规精致动漫脸"
+      - "渐变、文字、签名、水印"
+    qa:
+      - "看起来是平面卡通，不是半写实动漫或低多边形人物。"
+      - "头发是 5–8 块连贯大形状。"
+      - "眼睛为黑色椭圆，鼻嘴高度简化。"
+      - "每个区域不超过两级明暗，且没有渐变。"
+
+  - id: IP-03
+    display_name: "粉蜡笔撞色肖像"
+    reference_group: IP-03-style-01
+    reference_assets:
+      - assets/style-library/assets/references/style-01/ref-01.jpg
+      - assets/style-library/assets/references/style-01/ref-02.jpg
+      - assets/style-library/assets/references/style-01/ref-03.jpg
+      - assets/style-library/assets/references/style-01/ref-04.jpg
+    capabilities:
+      default_prototype: avatar
+      supported_forms: [avatar, bust_sticker, full_body, full_body_sticker]
+      conditional_forms: []
+      unsupported_forms: [outfit_variant]
+    defaults:
+      aspect_ratio: "1:1"
+      background: white_with_sparse_colored_marks
+    render_rules:
+      - "头部约占画面三分之二，脸型圆润夸张。"
+      - "眼睛是醒目的圆形色块；鼻子是短小色点；嘴巴是简单实心图形。"
+      - "发型保留人物锁定的分缝和外轮廓，但由粗大、厚重、连贯的油画棒色块构成。"
+      - "脸、头发、衣服和双手直接由不透明粉蜡笔或油画棒笔触塑形，保留干刷、断裂和涂抹。"
+      - "使用高饱和撞色；背景优先白色，只加少量与调色板一致的手绘符号。"
+    negative_rules:
+      - "常规动漫脸或写实眼睛"
+      - "真实皮肤、鼻唇、牙齿、发丝或摄影光影"
+      - "平滑数字渐变或先画光滑人物再叠颗粒"
+      - "半写实肖像"
+      - "满版彩色背景"
+      - "文字、签名、水印"
+    qa:
+      - "头部约占画面三分之二，而不是普通半身比例。"
+      - "眼睛是圆形色块，不含写实反光、睫毛或复杂眼部结构。"
+      - "每个区域都由厚重油画棒直接构成，而不是滤镜效果。"
+      - "人物锁定的发型轮廓和发色被保留，没有继承样例人物特征。"
+
+  - id: IP-04
+    display_name: "彩铅换装小人"
+    reference_group: IP-04-style-05
+    reference_assets:
+      - assets/style-library/assets/references/style-05/ref-01.png
+      - assets/style-library/assets/references/style-05/ref-02.png
+      - assets/style-library/assets/references/style-05/ref-03.png
+      - assets/style-library/assets/references/style-05/ref-04.png
+    capabilities:
+      default_prototype: full_body
+      supported_forms: [full_body, full_body_sticker, outfit_variant, avatar]
+      conditional_forms: []
+      unsupported_forms: [scene_card]
+    defaults:
+      aspect_ratio: "4:5"
+      background: transparent_or_clean_solid
+    render_rules:
+      - "使用约 2.5–3.5 头身的紧凑全身人物，完整展示服装、袜子、鞋子和配饰。"
+      - "小眼睛、小嘴巴、圆脸颊与克制表情。"
+      - "使用柔和灰色彩铅轮廓、纸张纤维和毛茸颗粒。"
+      - "使用低饱和糖果色，穿搭来自人物锁定项或本轮已确认的换装方案。"
+    negative_rules:
+      - "写实修长比例"
+      - "坚硬纯黑矢量轮廓"
+      - "光滑三维渲染"
+      - "拥挤场景"
+      - "文字、签名、水印"
+    qa:
+      - "人物从头顶到鞋底完整出现，没有裁切。"
+      - "头身比例、服装、袜子、鞋子和配饰符合角色设定。"
+      - "轮廓是柔灰彩铅而非硬黑矢量线。"
+      - "纸张/彩铅颗粒存在，但人物保持清晰可辨。"
+
+  - id: IP-05
+    display_name: "治愈手帐小剧场"
+    reference_group: IP-05-style-04
+    reference_assets:
+      - assets/style-library/assets/references/style-04/ref-01.png
+      - assets/style-library/assets/references/style-04/ref-02.png
+      - assets/style-library/assets/references/style-04/ref-03.png
+      - assets/style-library/assets/references/style-04/ref-04.png
+    capabilities:
+      default_prototype: scene_card
+      supported_forms: [bust_sticker, full_body_sticker, scene_card]
+      conditional_forms: []
+      unsupported_forms: [outfit_variant]
+    defaults:
+      aspect_ratio: "4:5"
+      background: scene_card_or_transparent_for_sticker
+    render_rules:
+      - "小人物使用极简点状五官、淡腮红、松弛细线和简单平涂。"
+      - "每张 scene_card 只安排一个与主题有关的微型场景元素。"
+      - "使用 2–4 种克制自然色或主题色，并保留大面积留白。"
+      - "角色主锚点清楚，场景元素服务于一个可读的小故事。"
+    negative_rules:
+      - "常规 Q 版大眼"
+      - "商业吉祥物光泽"
+      - "复杂电影场景或强烈三维纵深"
+      - "写实光影"
+      - "无关道具堆积"
+      - "文字、签名、水印"
+    qa:
+      - "只有一个有意义的场景元素，没有道具堆砌。"
+      - "主色数量为 2–4，且留白充足。"
+      - "线条保持松弛、细而手绘，不像商业吉祥物。"
+      - "人物与微型场景共同表达清晰单一的情境。"
+
+  - id: IP-06
+    display_name: "粗线撞色漫画"
+    reference_group: IP-06-style-03
+    reference_assets:
+      - assets/style-library/assets/references/style-03/ref-01.jpg
+      - assets/style-library/assets/references/style-03/ref-02.jpg
+      - assets/style-library/assets/references/style-03/ref-03.jpg
+      - assets/style-library/assets/references/style-03/ref-04.jpg
+    capabilities:
+      default_prototype: avatar
+      supported_forms: [avatar, bust_sticker, cover_card]
+      conditional_forms: [full_body]
+      unsupported_forms: [outfit_variant, scene_card]
+    defaults:
+      aspect_ratio: "1:1"
+      background: high_saturation_flat
+    render_rules:
+      - "使用极粗且统一的黑色轮廓，头发形成强烈的深色块面外形。"
+      - "使用大而图形化的漫画五官和直接有趣的表情。"
+      - "使用高饱和两到三色体系和纯色海报背景。"
+      - "可使用一个与用户有关的简洁符号作为记忆点，但不加入文字。"
+    negative_rules:
+      - "细腻彩铅或浅淡水彩"
+      - "写实光影或复杂渐变"
+      - "混乱线宽"
+      - "过多装饰"
+      - "文字、签名、水印"
+    qa:
+      - "黑色轮廓极粗且线宽统一。"
+      - "发型是清楚的深色块面，而不是细碎发丝。"
+      - "画面只使用两到三种主色且背景为纯色。"
+      - "五官与表情具有直接漫画感，不混入彩铅、水彩或写实光影。"
